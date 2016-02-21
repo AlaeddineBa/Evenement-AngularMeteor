@@ -1,0 +1,1 @@
+Evenements = new Mongo.Collection('evenements');

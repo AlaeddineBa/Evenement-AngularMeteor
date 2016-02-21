@@ -1,0 +1,1 @@
+angular.module('event', ['angular-meteor', 'ui.router', 'naif.base64', 'ngMaterial']);
