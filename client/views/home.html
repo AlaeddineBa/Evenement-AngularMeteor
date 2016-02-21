@@ -3,59 +3,53 @@
 
     <table class="table" ng-controller="formController as vm">
         <tbody>
-        <tr>
-            <td>
-                <md-input-container>
-                    <label>Titre</label>
-                    <input ng-model="vm.event.titre">
-                </md-input-container>
-            </td>
-            <td>
-                <md-input-container>
-                    <label>Description</label>
-                    <input ng-model="vm.event.desc">
-                </md-input-container>
-            </td>
-            <td>
-                <md-input-container>
-                    <label>Type</label>
-                    <input ng-model="vm.event.type">
-                </md-input-container>
-            </td>
-            <td>
-                <md-input-container>
-                    <label>Date</label>
-                    <input ng-model="vm.event.date">
-                </md-input-container>
-            </td>
-          <td class="logo-input" >
-            <input type="file" ng-model="myfile" onload="vm.onLoad"  accept="image/*" class="inputfile" base-sixty-four-input>
-            <label class="logo-label" for="file">
-            <img class="logo chosed-logo" ng-src="{{vm.logoPick}}" alt="">
-            </label>
-            </td>
-            <td>
-                <button class="btn btn-raised btn-primary" ng-click="vm.addEvent(vm.event)">Add Event</button>
-            </td>
-        </tr>
-        <tr>
-
-        </tr>
+            <tr>
+                <td>
+                    <md-input-container>
+                        <label>Titre</label>
+                        <input ng-model="vm.event.titre">
+                    </md-input-container>
+                </td>
+                <td>
+                    <md-input-container>
+                        <label>Description</label>
+                        <input ng-model="vm.event.desc">
+                    </md-input-container>
+                </td>
+                <td>
+                    <md-input-container>
+                        <label>Type</label>
+                        <input ng-model="vm.event.type">
+                    </md-input-container>
+                </td>
+                <td>
+                    <md-input-container>
+                        <label>Date</label>
+                        <input ng-model="vm.event.date">
+                    </md-input-container>
+                </td>
+                <td class="logo-input" >
+                    <input type="file" ng-model="myfile" onload="vm.onLoad"  accept="image/*" class="inputfile" base-sixty-four-input>
+                    <label class="logo-label" for="file">
+                    <img class="logo chosed-logo" ng-src="{{vm.logoPick}}" alt="">
+                    </label>
+                </td>
+                <td>
+                    <button class="btn btn-raised btn-primary" ng-click="vm.addEvent(vm.event)">Add Event</button>
+                </td>
+            </tr>
         </tbody>
     </table>
 
     <table class="table event-list" ng-controller="accueilController as vm">
         <tbody>
-        <tr class="event" ng-repeat="evenement in vm.accueil">
-                {{vm.title}}
-            <td class="logo-row"><img class="logo" ng-src="data:image/png;base64,{{evenement.base64}}" alt=""></td>
-            <td><span class="event-title">{{ evenement.titre }}</span></td>
-            <td><a class="btn btn-primary" href="/more/{{ evenement._id }}"><i class="fa fa-chevron-right"></i></a></td>
-        </tr>
+            <tr class="event" ng-repeat="evenement in vm.accueil">
+                <td class="logo-row"><img class="logo" ng-src="data:image/png;base64,{{evenement.base64}}" alt=""></td>
+                <td><span class="event-title">{{ evenement.titre }}</span></td>
+                <td><a class="btn btn-primary" href="/more/{{ evenement._id }}"><i class="fa fa-chevron-right"></i></a></td>
+            </tr>
         </tbody>
     </table>
-
-
-
     <!--events-list-->
+
 </div> <!-- container -->
