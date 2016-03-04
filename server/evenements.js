@@ -12,16 +12,17 @@ Meteor.methods({
     removeEvent: function(id){
         Evenements.remove(id);
     },
-    sendEmail: function (text) {
+    sendEmail: function (from, text) {
         //check([text], [String]);
 
         this.unblock();
 
         Email.send({
             to: 'alaeddine.baghdadi1@gmail.com',
-            from: 'alaeddine.baghdadi1@gmail.com',
+            from: from,
             subject: 'New message from contact form',
             text: text
         });
     }
 })
+

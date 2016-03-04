@@ -1,17 +1,17 @@
-<md-dialog aria-label="Ajouter">
+<div class="md-padding">
+    <md-dialog aria-label="Ajouter">
 
-    <md-toolbar>
-        <div class="md-toolbar-tools">
-            <md-title>{{vm.title}}</md-title>
-            <span flex></span>
-            <md-button class="md-icon-button" ng-click="vm.cancel()">
-                <md-icon md-svg-icon="navigation:ic_close_24px" aria-label="Close dialog"></md-icon>
-            </md-button>
-        </div>
-    </md-toolbar>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <md-title>{{vm.title}}</md-title>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="vm.cancel()">
+                    <md-icon md-svg-icon="navigation:ic_close_24px" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
 
-    <md-dialog-content class="md-padding">
-        <form name="userForm">
+        <md-dialog-content class="md-padding">
             <div layout="row" layout-xs="column">
                 <md-input-container flex><label>Prenom</label> <input ng-model="vm.event.firstname">
                 </md-input-container>
@@ -22,9 +22,15 @@
             <div layout="row" layout-xs="column">
                 <md-input-container flex><label>Date</label> <input ng-model="vm.event.date"></md-input-container>
                 <span flex="5"></span>
-                <!--<md-input-container flex><label>Ville</label> <input ng-model="vm.event.ville"></md-input-container>-->
-                <md-autocomplete md-selected-item="ul.selectedItem" md-search-text="vm.event.ville" md-items="item in vm.ville| filter: vm.event.ville:strict" md-item-text="item" placeholder="Ville" md-min-length="0">
-                    <span md-highlight-text="vm.event.ville">{{item}}</span>
+
+                <md-autocomplete flex="" required="" md-input-name="autocompleteVille" md-input-minlength="1"
+                                 md-input-maxlength="18" md-selected-item="ul.selectedItem"
+                                 md-search-text="vm.event.ville" md-items="item in vm.ville| filter: vm.event.ville:strict"
+                                 md-item-text="item" md-floating-label="Ville">
+                    <md-item-template>
+                        <span md-highlight-text="vm.event.ville">{{item}}</span>
+                    </md-item-template>
+
                 </md-autocomplete>
             </div>
             <md-input-container>
@@ -35,9 +41,12 @@
                        base-sixty-four-input>
                 <md-icon ng-src="{{vm.logoPick}}"></md-icon>
             </md-input-container>
-        </form>
-    </md-dialog-content>
-    <div class="md-actions" layout="row"><span flex></span>
-        <md-button ng-click="vm.answer(vm.event)" class="md-primary md-raised">{{vm.button}}</md-button>
-    </div>
-</md-dialog>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button ng-click="vm.answer(vm.event)" class="md-primary md-raised">{{vm.button}}</md-button>
+        </md-dialog-actions>
+
+
+    </md-dialog>
+</div>

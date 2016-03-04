@@ -16,15 +16,12 @@
 
             <md-divider></md-divider>
             <!--Recherche-->
-            <md-input-container class="md-icon-float md-block">
-                <label>Recherche</label>
-                <md-icon md-svg-icon="action:ic_search_24px"></md-icon>
-                <input ng-model="recherche" type="text">
-            </md-input-container>
+            <search-event class=""></search-event>
 
             <md-divider></md-divider>
 
-            <md-list-item class="md-3-line" ng-repeat="evenement in vm.evenements| filter: recherche"
+            <md-list-item class="md-3-line"
+                          ng-repeat="evenement in vm.evenements| filter: vm.searchfilter()"
                           ng-click="vm.showAdd($event, evenement)">
 
                 <img ng-src="data:image/png;base64,{{evenement.base64}}" class="md-avatar" alt="">

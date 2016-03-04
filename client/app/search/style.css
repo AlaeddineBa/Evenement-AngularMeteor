@@ -1,0 +1,15 @@
+/*md-input-container.md-input-focused .md-input {
+    padding-bottom: 0;
+    border-width: 0 0 0 0;
+}
+md-input-container .md-input {
+    border-width: 0 0 0 0;
+}*/
+.search-place{
+    margin-top: 15px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+.search-icon{
+    padding-left: 4px;
+}

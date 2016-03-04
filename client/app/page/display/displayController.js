@@ -11,6 +11,7 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
     vm.deleteEvent = deleteEvent;
     vm.showConfirm = showConfirm;
     vm.showAdd = showAdd;
+    vm.searchfilter = searchfilter;
 
     vm.subscribe('evenements');
     console.log(Meteor.user());
@@ -70,6 +71,35 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
             });
     };
 
+    function searchfilter() {
+        $reactive(this).attach($scope);
+        let vm = this;
+        let search = [];
+        search.base64 = "";
+        search.ville = "";
+        if (vm.recherche) {
+            let res = vm.recherche.split(" ");
+            if (vm.recherche.split(" ").length == 0) {
+                console.log("test");
+            } else if (vm.recherche.split(" ").length == 1) {
+                search.firstname = res[0];
+                //search.lastname = res[0];
+            }else if (vm.recherche.split(" ").length == 2) {
+                search.firstname = res[0];
+                search.lastname = res[1];
+            }
+        }
+
+        /*let res = vm.recherche.split(" ");
+         console.log(res.length);
+         console.log(res);
+         search.firstname = res[0];
+         search.lastname = res[1];
+         console.log(search);
+         }*/
+        return search;
+    }
+
     function DialogController($mdDialog, eventAM) {
         let vm = this;
 
@@ -110,7 +140,6 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
             vm.title = "Ajout";
             vm.button = "Ajouter";
         }
-
 
         vm.hide = function () {
             $mdDialog.hide();
