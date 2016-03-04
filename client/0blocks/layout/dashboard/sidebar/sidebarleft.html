@@ -1,0 +1,29 @@
+<md-toolbar class="md-tall md-hue-2 md-padding md-default-theme">
+    <span flex></span>
+    <div layout="column" class="md-toolbar-tools-bottom">
+        <user-avatar></user-avatar>
+        <span></span>
+        <div>{{$auth.currentUser.username}}</div>
+        <div>{{$auth.currentUser.emails[0].address}}</div>
+    </div>
+</md-toolbar>
+<div layout="column">
+
+    <md-menu-item>
+        <md-button ng-click="goToDisplay()" aria-label="Afficher">
+            <md-icon md-svg-icon="image:ic_collections_24px"></md-icon>
+            <span>Evenements</span>
+        </md-button>
+    </md-menu-item>
+
+    <md-divider></md-divider>
+
+    <md-menu-item>
+        <md-button ng-click="goToContact()" aria-label="Contact">
+            <md-icon md-svg-icon="communication:ic_contacts_24px"></md-icon>
+            Contact
+        </md-button>
+    </md-menu-item>
+
+
+</div>

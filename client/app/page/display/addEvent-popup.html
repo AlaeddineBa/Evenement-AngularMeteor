@@ -1,0 +1,43 @@
+<md-dialog aria-label="Ajouter">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <md-title>{{vm.title}}</md-title>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="vm.cancel()">
+                <md-icon md-svg-icon="navigation:ic_close_24px" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content class="md-padding">
+        <form name="userForm">
+            <div layout="row" layout-xs="column">
+                <md-input-container flex><label>Prenom</label> <input ng-model="vm.event.firstname">
+                </md-input-container>
+                <span flex="5"></span>
+                <md-input-container flex><label>Nom</label> <input ng-model="vm.event.lastname">
+                </md-input-container>
+            </div>
+            <div layout="row" layout-xs="column">
+                <md-input-container flex><label>Date</label> <input ng-model="vm.event.date"></md-input-container>
+                <span flex="5"></span>
+                <!--<md-input-container flex><label>Ville</label> <input ng-model="vm.event.ville"></md-input-container>-->
+                <md-autocomplete md-selected-item="ul.selectedItem" md-search-text="vm.event.ville" md-items="item in vm.ville| filter: vm.event.ville:strict" md-item-text="item" placeholder="Ville" md-min-length="0">
+                    <span md-highlight-text="vm.event.ville">{{item}}</span>
+                </md-autocomplete>
+            </div>
+            <md-input-container>
+                <label for="file">
+                    <md-icon md-svg-icon="image:ic_add_a_photo_24px" class="main-souris"></md-icon>
+                </label>
+                <input type="file" ng-model="myfile" onload="vm.onLoad" accept="image/*" class="inputfile"
+                       base-sixty-four-input>
+                <md-icon ng-src="{{vm.logoPick}}"></md-icon>
+            </md-input-container>
+        </form>
+    </md-dialog-content>
+    <div class="md-actions" layout="row"><span flex></span>
+        <md-button ng-click="vm.answer(vm.event)" class="md-primary md-raised">{{vm.button}}</md-button>
+    </div>
+</md-dialog>

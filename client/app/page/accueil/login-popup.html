@@ -1,0 +1,37 @@
+<div class="md-padding">
+    <md-dialog aria-label="Connexion" ng-cloak>
+
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Connexion</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="vm.cancel()">
+                    <md-icon md-svg-icon="navigation:ic_close_24px" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div layout="column">
+                    <md-input-container>
+                        <label>Email</label>
+                        <input ng-model="vm.auth.email">
+                    </md-input-container>
+
+                    <span flex="5" hide-xs></span>
+
+                    <md-input-container>
+                        <label>Password</label>
+                        <input type="password" ng-model="vm.auth.password">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <md-dialog-actions layout="row">
+                <md-button class="md-primary md-raised" ng-click="vm.answer(vm.auth)">Login</md-button>
+            </md-dialog-actions>
+
+        </md-dialog-content>
+    </md-dialog>
+</div>

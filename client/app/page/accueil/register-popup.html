@@ -1,0 +1,42 @@
+<div class="md-padding">
+    <md-dialog aria-label="Inscription" ng-cloak>
+
+        <md-toolbar style="height: 10px">
+            <div class="md-toolbar-tools">
+                <h2>Inscription</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="vm.cancel()">
+                    <md-icon md-svg-icon="navigation:ic_close_24px" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div layout="column">
+
+                    <md-input-container>
+                        <label>User Name </label>
+                        <input ng-model="vm.signup.username">
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Email</label>
+                        <input ng-model="vm.signup.email">
+                    </md-input-container>
+
+                    <span flex="5" hide-xs></span>
+
+                    <md-input-container>
+                        <label>Password</label>
+                        <input type="password" ng-model="vm.signup.password">
+                    </md-input-container>
+                </div>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button class="md-primary md-raised" ng-click="vm.answer(vm.signup)">Register</md-button>
+        </md-dialog-actions>
+    </md-dialog>
+</div>

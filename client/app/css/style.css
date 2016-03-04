@@ -6,16 +6,25 @@
 .event-list>tbody>tr>td:nth-child(2){width: 30%;}
 .event-list>tbody>tr>td:nth-child(3){width: 70%;text-align: right;}
 
+html, body {
+	min-height: 100vh;
+}
+
+
 .logo{
 	width: 50px;
 	height: 50px;
-	padding: 5px;
+	padding: 0px;
+	border-radius: 50%;
+}
+.logo-input{
+	width: 50px;
+	height: 50px;
+	padding: 0px;
 	border-radius: 50%;
 }
 
 .chosed-logo{
-	width: 70px;
-	height: 70px;
 }
 
 .add-form{
@@ -86,7 +95,7 @@
 	color: #fff;
 	z-index: 9;
 }
-.logo-label i{margin-top: 5px;}
+.logo-label i{margin-top: -10px;}
 
 
 .event-title{
@@ -96,7 +105,3 @@
 
 .inputdemoBasicUsage .md-datepicker-button {
 	width: 36px; }
-
-.date{
-	margin-inside: -500px;
-}

@@ -1,0 +1,15 @@
+<div layout="row"  class="md-toolbar-tools">
+
+    <md-button ng-click="vm.toggleSidenav('left')" class="md-icon-button" aria-label="Menu" hide-gt-sm>
+        <md-icon md-svg-icon="navigation:ic_menu_24px"></md-icon>
+    </md-button>
+
+
+    <h3 class="user-name">Bonjour {{$auth.currentUser.username}}</h3>
+
+    <span flex></span>
+    <md-button class="md-icon-button md-flat" ng-click="vm.logout()" aria-label="LogOut">
+        <md-icon md-svg-icon="action:ic_power_settings_new_24px"></md-icon>
+    </md-button>
+
+</div>

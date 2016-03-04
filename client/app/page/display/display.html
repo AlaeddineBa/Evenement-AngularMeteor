@@ -1,0 +1,49 @@
+<div ng-controller="displayController as vm" ng-cloak="">
+    <md-content>
+        <md-list>
+            <div class="md-padding display-evenement">
+                <div layout="row">
+                    <div layout="column">
+                        <md-icon class="icon-size" md-svg-icon="image:ic_panorama_24px"></md-icon>
+                        <h2>Evenement</h2>
+                    </div>
+                    <span flex></span>
+                    <md-button class="md-fab position-button" aria-label="Add" ng-click="vm.showAdd($event, null)">
+                        <md-icon md-svg-icon="content:ic_add_24px"></md-icon>
+                    </md-button>
+                </div>
+            </div>
+
+            <md-divider></md-divider>
+            <!--Recherche-->
+            <md-input-container class="md-icon-float md-block">
+                <label>Recherche</label>
+                <md-icon md-svg-icon="action:ic_search_24px"></md-icon>
+                <input ng-model="recherche" type="text">
+            </md-input-container>
+
+            <md-divider></md-divider>
+
+            <md-list-item class="md-3-line" ng-repeat="evenement in vm.evenements| filter: recherche"
+                          ng-click="vm.showAdd($event, evenement)">
+
+                <img ng-src="data:image/png;base64,{{evenement.base64}}" class="md-avatar" alt="">
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{ evenement.firstname }}</h3>
+                    <h4>{{ evenement.lastname }}</h4>
+                    <p>{{ evenement.ville }}</p>
+                </div>
+
+                <md-icon class="md-secondary" aria-label="Delete" ng-click="vm.showConfirm($event, evenement._id)"
+                         md-svg-icon="action:ic_delete_24px"></md-icon>
+                <md-divider></md-divider>
+
+            </md-list-item>
+        </md-list>
+    </md-content>
+</div>
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+-->

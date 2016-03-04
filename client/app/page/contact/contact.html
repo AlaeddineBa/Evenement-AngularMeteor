@@ -1,0 +1,37 @@
+<div ng-controller="contactController as vm">
+
+        <div class="md-padding display-evenement">
+            <div>
+                <md-icon class="icon-size" md-svg-icon="communication:ic_contacts_24px"></md-icon>
+                <h2>Contact</h2>
+            </div>
+        </div>
+
+        <md-divider></md-divider>
+        <md-content>
+            <div layout="column" layout-xs="column" class="md-padding">
+
+                <md-input-container flex><label>First name </label> <input ng-model="$auth.currentUser.username">
+                </md-input-container>
+
+                <span flex="5"></span>
+
+                <md-input-container flex><label>Email adresse </label> <input ng-model="$auth.currentUser.emails[0].address">
+                </md-input-container>
+
+                <md-input-container flex><label>Last name </label> <input ng-model="vm.contact.lastname">
+                </md-input-container>
+
+                <span flex="5"></span>
+
+                <md-input-container flex><label>Text </label> <textarea ng-model="vm.contact.text"></textarea>
+                </md-input-container>
+
+            </div>
+        </md-content>
+
+        <md-dialog-actions>
+            <md-button class="md-primary md-raised" ng-click="vm.sendMail(vm.contact.text)" aria-label="Contact">Contact</md-button>
+        </md-dialog-actions>
+
+</div>
