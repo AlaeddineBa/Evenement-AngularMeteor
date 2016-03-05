@@ -2,14 +2,27 @@ Meteor.publish('evenements', function () {
     return Evenements.find({});
 });
 Meteor.methods({
-    insertEvent: function(event){
-        Evenements.insert({firstname: event.firstname, lastname: event.lastname, date: event.date, ville: event.ville, base64: event.base64}, function(error, result){});
+    insertEvent: function (event) {
+        Evenements.insert({
+            cordo:{firstname: event.cordo.firstname, lastname: event.cordo.lastname},
+            date: event.date,
+            ville: event.ville,
+            base64: event.base64
+        }, function (error, result) {
+        });
     },
-    updateEvent: function(event){
-        Evenements.update({_id:event._id}, { $set:{firstname: event.firstname, lastname: event.lastname, date: event.date, ville: event.ville, base64: event.base64}});
+    updateEvent: function (event) {
+        Evenements.update({_id: event._id}, {
+            $set: {
+                cordo:{
+                    firstname: event.cordo.firstname,
+                    lastname: event.cordo.lastname
+                }, date: event.date, ville: event.ville, base64: event.base64
+            }
+        });
 
     },
-    removeEvent: function(id){
+    removeEvent: function (id) {
         Evenements.remove(id);
     },
     sendEmail: function (from, text) {

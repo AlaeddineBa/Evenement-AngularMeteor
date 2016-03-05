@@ -75,28 +75,19 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
         $reactive(this).attach($scope);
         let vm = this;
         let search = [];
-        search.base64 = "";
-        search.ville = "";
+        search.cordo = {}
         if (vm.recherche) {
             let res = vm.recherche.split(" ");
-            if (vm.recherche.split(" ").length == 0) {
+            if (res.length == 0) {
+                //search.cordo = {};
                 console.log("test");
-            } else if (vm.recherche.split(" ").length == 1) {
-                search.firstname = res[0];
-                //search.lastname = res[0];
-            }else if (vm.recherche.split(" ").length == 2) {
-                search.firstname = res[0];
-                search.lastname = res[1];
+            } else if (res.length == 1) {
+                search.cordo.$ = res[0];
+            }else if (res.length == 2) {
+                search.cordo.firstname = res[0];
+                search.cordo.lastname = res[1];
             }
         }
-
-        /*let res = vm.recherche.split(" ");
-         console.log(res.length);
-         console.log(res);
-         search.firstname = res[0];
-         search.lastname = res[1];
-         console.log(search);
-         }*/
         return search;
     }
 
@@ -124,16 +115,16 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
 
         if (eventAM) {
             vm.event._id = eventAM._id;
-            vm.event.firstname = eventAM.firstname;
-            vm.event.lastname = eventAM.lastname;
+            vm.event.cordo.firstname = eventAM.cordo.firstname;
+            vm.event.cordo.lastname = eventAM.cordo.lastname;
             vm.event.ville = eventAM.ville;
             vm.event.date = eventAM.date;
             vm.event.base64 = eventAM.base64;
             vm.title = "Update";
             vm.button = "Update";
         } else {
-            vm.event.firstname = "";
-            vm.event.lastname = "";
+            vm.event.cordo.firstname = "";
+            vm.event.cordo.lastname = "";
             vm.event.ville = "";
             vm.event.date = "";
             vm.event.base64 = "";

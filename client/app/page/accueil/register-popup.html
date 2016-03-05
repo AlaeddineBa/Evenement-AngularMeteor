@@ -22,7 +22,7 @@
 
                     <md-input-container>
                         <label>Email</label>
-                        <input ng-model="vm.signup.email">
+                        <input type="email" ng-model="vm.signup.email">
                     </md-input-container>
 
                     <span flex="5" hide-xs></span>
@@ -30,6 +30,10 @@
                     <md-input-container>
                         <label>Password</label>
                         <input type="password" ng-model="vm.signup.password">
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Confirm Password </label>
+                        <input type="password" ng-model="vm.signup.confirmPassword" required compare-to="vm.signup.password">
                     </md-input-container>
                 </div>
             </div>
