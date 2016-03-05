@@ -14,7 +14,7 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
     vm.searchfilter = searchfilter;
 
     vm.subscribe('evenements');
-    console.log(Meteor.user());
+    //console.log(Meteor.user());
     vm.helpers({
         evenements: () => Evenements.find({})
 
@@ -53,16 +53,21 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
 
             })
             .then(function (event) {
+
                 if (eventAM) {
                     Meteor.call('updateEvent', event);
                     toastr.success("Evenement modifié");
-                    vm.ville.push(event.ville);
-                    console.log(vm.ville);
+
+                    //vm.ville.push(event.ville);
                 } else {
                     Meteor.call('insertEvent', event);
                     toastr.success("Evenement ajouté");
                 }
             }, function () {
+                vm.helpers({
+                    evenements: () => Evenements.find({})
+
+                });
                 if (eventAM) {
                     toastr.warning("Evenement non modifié");
                 } else {
@@ -72,20 +77,20 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
     };
 
     function searchfilter() {
-        $reactive(this).attach($scope);
-        let vm = this;
+        /*$reactive(this).attach($scope);
+        let vm = this;*/
         let search = [];
-        search.cordo = {};
+        search.details = {};
         if (vm.recherche) {
             let res = vm.recherche.split(" ");
             if (res.length == 0) {
-                //search.cordo = {};
+                //search.details = {};
                 console.log("test");
             } else if (res.length == 1) {
-                search.cordo.$ = res[0];
+                search.details.$ = res[0];
             }else if (res.length == 2) {
-                search.cordo.firstname = res[0];
-                search.cordo.lastname = res[1];
+                search.details.firstname = res[0];
+                search.details.lastname = res[1];
             }
         }
         return search;
@@ -106,26 +111,27 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
         };
 
         vm.event = {};
-        vm.event.cordo = {};
+        /*vm.event.details = {};*/
         let villeT = [];
 
         for (var i = 0; i < Evenements.find({}).count(); i++) {
             villeT.push(Evenements.find({}).fetch()[i].ville);
         }
         vm.ville = cleanArray(villeT);
-
+        console.log(vm.ville);
         if (eventAM) {
-            vm.event._id = eventAM._id;
-            vm.event.cordo.firstname = eventAM.cordo.firstname;
-            vm.event.cordo.lastname = eventAM.cordo.lastname;
+            vm.event = eventAM;
+            /*vm.event._id = eventAM._id;
+            vm.event.details.firstname = eventAM.details.firstname;
+            vm.event.details.lastname = eventAM.details.lastname;
             vm.event.ville = eventAM.ville;
             vm.event.date = eventAM.date;
-            vm.event.base64 = eventAM.base64;
+            vm.event.base64 = eventAM.base64;*/
             vm.title = "Update";
             vm.button = "Update";
         } else {
-            vm.event.cordo.firstname = "";
-            vm.event.cordo.lastname = "";
+            vm.event.details.firstname = "";
+            vm.event.details.lastname = "";
             vm.event.ville = "";
             vm.event.date = "";
             vm.event.base64 = "";

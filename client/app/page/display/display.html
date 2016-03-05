@@ -1,6 +1,6 @@
 <div ng-controller="displayController as vm" ng-cloak="">
     <md-content>
-        <md-list>
+        <md-list class="place-titre">
             <div class="md-padding display-evenement">
                 <div layout="row">
                     <div layout="column">
@@ -19,15 +19,14 @@
             <search-event class=""></search-event>
 
             <md-divider></md-divider>
-
             <md-list-item class="md-3-line"
                           ng-repeat="evenement in vm.evenements| filter: vm.searchfilter()"
                           ng-click="vm.showAdd($event, evenement)">
 
                 <img ng-src="data:image/png;base64,{{evenement.base64}}" class="md-avatar" alt="">
                 <div class="md-list-item-text" layout="column">
-                    <h3>{{ evenement.cordo.firstname }}</h3>
-                    <h4>{{ evenement.cordo.lastname }}</h4>
+                    <h3>{{ evenement.details.firstname }}</h3>
+                    <h4>{{ evenement.details.lastname }}</h4>
                     <p>{{ evenement.ville }}</p>
                 </div>
 

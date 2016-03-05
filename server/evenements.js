@@ -3,21 +3,17 @@ Meteor.publish('evenements', function () {
 });
 Meteor.methods({
     insertEvent: function (event) {
-        Evenements.insert({
-            cordo:{firstname: event.cordo.firstname, lastname: event.cordo.lastname},
-            date: event.date,
-            ville: event.ville,
-            base64: event.base64
-        }, function (error, result) {
-        });
+        Evenements.insert(event, function (error, result) {});
     },
     updateEvent: function (event) {
+        console.log("Update " + event);
         Evenements.update({_id: event._id}, {
             $set: {
-                cordo:{
-                    firstname: event.cordo.firstname,
-                    lastname: event.cordo.lastname
-                }, date: event.date, ville: event.ville, base64: event.base64
+                _id: event._id,
+                'details': event.details,
+                'date': event.date,
+                'ville': event.ville,
+                'base64': event.base64
             }
         });
 
