@@ -75,7 +75,7 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
         $reactive(this).attach($scope);
         let vm = this;
         let search = [];
-        search.cordo = {}
+        search.cordo = {};
         if (vm.recherche) {
             let res = vm.recherche.split(" ");
             if (res.length == 0) {
@@ -103,9 +103,10 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
                 out.push(j);
             }
             return out;
-        }
+        };
 
         vm.event = {};
+        vm.event.cordo = {};
         let villeT = [];
 
         for (var i = 0; i < Evenements.find({}).count(); i++) {
