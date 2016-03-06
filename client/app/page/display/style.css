@@ -52,11 +52,13 @@
 .display-evenement {
     height: 100px;
     background-image: url(assets/images/ewUIL.png);
+    box-sizing: initial;
 }
 
 .icon-size {
     height: 72px;
     width: 72px;
+    box-sizing: initial;
 }
 .size-dialog-add{
     height: 370px;

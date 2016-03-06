@@ -11,6 +11,6 @@
 
         $locationProvider.html5Mode(true);
 
-        $urlRouterProvider.otherwise("/accueil");
+        $urlRouterProvider.otherwise("/login");
     }
 })();

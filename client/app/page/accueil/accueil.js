@@ -6,6 +6,7 @@
         .controller('accueilController', accueilController);
 
     accueilController.$inject = ['$mdDialog', '$reactive', '$scope', '$state'];
+
     function accueilController($mdDialog, $reactive, $scope, $state) {
         $reactive(this).attach($scope);
         let vm = this;
@@ -73,14 +74,20 @@
         function DialogSignInController() {
 
             let vm = this;
-
+            vm.signup = {email: "", username: "", password: ""};
             vm.cancel = function () {
                 $mdDialog.cancel();
             };
 
             vm.answer = function () {
-                if (vm.signup.email && vm.signup.password && vm.signup.username)
+                if (vm.signup.email && vm.signup.password && vm.signup.username && vm.signup.confirmPassword) {
                     $mdDialog.hide(vm.signup);
+                    toastr.success("Inscription");
+                }
+
+                else {
+                    toastr.error("Vous devez remplir tous les champs pour s'inscrire");
+                }
 
             };
         }

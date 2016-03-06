@@ -15,7 +15,8 @@
 
         function logout() {
             Meteor.logout();
-            $state.go('accueil');
+            /*$state.go('accueil');*/
+            $state.go('accueil2.basic.login');
         }
 
         function toggleSidenav(menuId) {
