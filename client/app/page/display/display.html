@@ -27,7 +27,7 @@
                 <div class="md-list-item-text" layout="column">
                     <h3>{{ evenement.details.firstname }}</h3>
                     <h4>{{ evenement.details.lastname }}</h4>
-                    <p>{{ evenement.ville }}</p>
+                    <p>{{ evenement.ville }} - {{ evenement.state }}</p>
                 </div>
 
                 <md-icon class="md-secondary" aria-label="Delete" ng-click="vm.showConfirm($event, evenement._id)"

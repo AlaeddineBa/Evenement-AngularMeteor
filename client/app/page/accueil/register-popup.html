@@ -12,31 +12,47 @@
         </md-toolbar>
 
         <md-dialog-content>
-            <div class="md-dialog-content">
-                <div layout="column">
+            <form name="inscriptionForm">
+                <div class="md-dialog-content">
+                    <div layout="column">
 
-                    <md-input-container>
-                        <label>User Name </label>
-                        <input ng-model="vm.signup.username">
-                    </md-input-container>
+                        <md-input-container>
+                            <label>User Name </label>
+                            <md-icon md-svg-icon="social:ic_person_24px"></md-icon>
+                            <input name="username" ng-model="vm.signup.username" required>
+                            <div ng-messages="inscriptionForm.username.$error">
+                                <div ng-message="required">Ceci est nécessaire</div>
+                            </div>
+                        </md-input-container>
 
-                    <md-input-container>
-                        <label>Email</label>
-                        <input type="email" ng-model="vm.signup.email">
-                    </md-input-container>
+                        <md-input-container>
+                            <label>Email</label>
+                            <md-icon md-svg-icon="communication:ic_email_24px"></md-icon>
+                            <input name="email" type="email" ng-model="vm.signup.email">
+                            <div ng-messages="inscriptionForm.email.$error">
+                                <div ng-message="email">Email n est pas valide</div>
+                            </div>
+                        </md-input-container>
 
-                    <span flex="5" hide-xs></span>
+                        <span flex="5" hide-xs></span>
 
-                    <md-input-container>
-                        <label>Password</label>
-                        <input type="password" ng-model="vm.signup.password">
-                    </md-input-container>
-                    <md-input-container>
-                        <label>Confirm Password </label>
-                        <input type="password" ng-model="vm.signup.confirmPassword" required compare-to="vm.signup.password">
-                    </md-input-container>
+                        <md-input-container>
+                            <label>Password</label>
+                            <md-icon md-svg-icon="action:ic_fingerprint_24px"></md-icon>
+                            <input type="password" ng-model="vm.signup.password">
+                        </md-input-container>
+                        <md-input-container>
+                            <label>Confirm Password </label>
+                            <md-icon md-svg-icon="action:ic_fingerprint_24px"></md-icon>
+                            <input name="confirmPassword" type="password" ng-model="vm.signup.confirmPassword"
+                                   compare-to="vm.signup.password">
+                            <div ng-messages="inscriptionForm.confirmPassword.$error">
+                                <div ng-message="compareTo">les mots de passes doivent être identiques</div>
+                            </div>
+                        </md-input-container>
+                    </div>
                 </div>
-            </div>
+            </form>
         </md-dialog-content>
 
         <md-dialog-actions layout="row">

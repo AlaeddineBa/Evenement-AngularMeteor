@@ -1,5 +1,5 @@
 <div class="md-padding">
-    <md-dialog aria-label="Ajouter">
+    <md-dialog aria-label="Ajouter" class="size-dialog-add">
 
         <md-toolbar>
             <div class="md-toolbar-tools">
@@ -23,24 +23,39 @@
                 <md-input-container flex><label>Date</label> <input ng-model="vm.event.date"></md-input-container>
                 <span flex="5"></span>
 
+                <md-input-container>
+                    <label>Pays</label>
+                    <md-select ng-model="vm.event.state">
+                        <md-option ng-repeat="state in vm.states" value="{{state}}">
+                            {{state}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <span flex="5"></span>
+
                 <md-autocomplete flex="" required="" md-input-name="autocompleteVille" md-input-minlength="1"
                                  md-input-maxlength="18" md-selected-item="ul.selectedItem"
-                                 md-search-text="vm.event.ville" md-items="item in vm.ville| filter: vm.event.ville:strict"
+                                 md-search-text="vm.event.ville"
+                                 md-items="item in vm.ville| filter: vm.event.ville:strict"
                                  md-item-text="item" md-floating-label="Ville">
                     <md-item-template>
                         <span md-highlight-text="vm.event.ville">{{item}}</span>
                     </md-item-template>
 
                 </md-autocomplete>
+
             </div>
-            <md-input-container>
-                <label for="file">
-                    <md-icon md-svg-icon="image:ic_add_a_photo_24px" class="main-souris"></md-icon>
+
+            <div>
+                <label>
+                    <md-icon md-svg-icon="image:ic_add_a_photo_24px" style="cursor: pointer;"></md-icon>
+                    <input type="file" ng-model="myfile" onload="vm.onLoad" accept="image/*" class="none"
+                           base-sixty-four-input />
                 </label>
-                <input type="file" ng-model="myfile" onload="vm.onLoad" accept="image/*" class="inputfile"
-                       base-sixty-four-input>
-                <md-icon ng-src="{{vm.logoPick}}"></md-icon>
-            </md-input-container>
+            </div>
+
+
         </md-dialog-content>
 
         <md-dialog-actions layout="row">

@@ -2,9 +2,9 @@ angular
     .module('event')
     .controller('displayController', displayController);
 
-displayController.$inject = ['$reactive', '$scope', '$meteor', '$mdDialog'];
+displayController.$inject = ['$reactive', '$scope', '$mdDialog'];
 
-function displayController($reactive, $scope, $meteor, $mdDialog) {
+function displayController($reactive, $scope, $mdDialog) {
     $reactive(this).attach($scope);
     var vm = this;
 
@@ -21,7 +21,7 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
     });
 
     function deleteEvent(id) {
-        $meteor.call('removeEvent', id);
+        Meteor.call('removeEvent', id);
     }
 
 
@@ -41,7 +41,7 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
         }, function () {
             toastr.warning("Evenement non effacé");
         });
-    };
+    }
 
     function showAdd(ev, eventAM) {
         $mdDialog.show({
@@ -74,11 +74,10 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
                     toastr.warning("Evenement non ajouté");
                 }
             });
-    };
+    }
 
     function searchfilter() {
-        /*$reactive(this).attach($scope);
-        let vm = this;*/
+
         let search = [];
         search.details = {};
         if (vm.recherche) {
@@ -88,7 +87,7 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
                 console.log("test");
             } else if (res.length == 1) {
                 search.details.$ = res[0];
-            }else if (res.length == 2) {
+            } else if (res.length == 2) {
                 search.details.firstname = res[0];
                 search.details.lastname = res[1];
             }
@@ -98,6 +97,183 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
 
     function DialogController($mdDialog, eventAM) {
         let vm = this;
+
+        vm.states = ['Albanie',
+            'Algérie',
+            'Allemagne',
+            'Andorre',
+            'Angola',
+            'Arabie saoudite',
+            'Argentine',
+            'Arménie',
+            'Australie',
+            'Autriche',
+            'Azerbaïdjan',
+            'Bahamas',
+            'Bahreïn',
+            'Bangladesh',
+            'Barbade',
+            'Belau',
+            'Belgique',
+            'Belize',
+            'Bénin',
+            'Bhoutan',
+            'Biélorussie',
+            'Birmanie',
+            'Bolivie',
+            'Bosnie-Herzégovine',
+            'Botswana',
+            'Brésil',
+            'Brunei',
+            'Bulgarie',
+            'Burkina',
+            'Burundi',
+            'Cambodge',
+            'Cameroun',
+            'Canada',
+            'Cap-Vert',
+            'Chili',
+            'Chine',
+            'Chypre',
+            'Colombie',
+            'Comores',
+            'Congo',
+            'Cook',
+            'Corée du Nord',
+            'Corée du Sud',
+            'Costa Rica',
+            'Croatie',
+            'Cuba',
+            'Danemark',
+            'Djibouti',
+            'Dominique',
+            'Égypte',
+            'Émirats arabes unis',
+            'Équateur',
+            'Érythrée',
+            'Espagne',
+            'Estonie',
+            'États-Unis',
+            'Éthiopie',
+            'Fidji',
+            'Finlande',
+            'France',
+            'Gabon',
+            'Gambie',
+            'Géorgie',
+            'Ghana',
+            'Grèce',
+            'Grenade',
+            'Guatemala',
+            'Guinée',
+            'Guinée-Bissao',
+            'Guyana',
+            'Haïti',
+            'Honduras',
+            'Hongrie',
+            'Inde',
+            'Indonésie',
+            'Iran',
+            'Iraq',
+            'Irlande',
+            'Islande',
+            'Italie',
+            'Jamaïque',
+            'Japon',
+            'Jordanie',
+            'Kazakhstan',
+            'Kenya',
+            'Kirghizistan',
+            'Kiribati',
+            'Koweït',
+            'Laos',
+            'Lesotho',
+            'Lettonie',
+            'Liban',
+            'Liberia',
+            'Libye',
+            'Liechtenstein',
+            'Lituanie',
+            'Luxembourg',
+            'Macédoine',
+            'Madagascar',
+            'Malaisie',
+            'Malawi',
+            'Maldives',
+            'Mali',
+            'Malte',
+            'Maroc',
+            'Marshall',
+            'Maurice',
+            'Mauritanie',
+            'Mexique',
+            'Micronésie',
+            'Moldavie',
+            'Monaco',
+            'Mongolie',
+            'Mozambique',
+            'Namibie',
+            'Nauru',
+            'Népal',
+            'Nicaragua',
+            'Niger',
+            'Nigeria',
+            'Niue',
+            'Norvège',
+            'Nouvelle-Zélande',
+            'Oman',
+            'Ouganda',
+            'Ouzbékistan',
+            'Pakistan',
+            'Panama',
+            'Paraguay',
+            'Pays-Bas',
+            'Pérou',
+            'Philippines',
+            'Pologne',
+            'Portugal',
+            'Qatar',
+            'Roumanie',
+            'Royaume-Uni',
+            'Russie',
+            'Rwanda',
+            'Salomon',
+            'Salvador',
+            'Sénégal',
+            'Seychelles',
+            'Sierra Leone',
+            'Singapour',
+            'Slovaquie',
+            'Slovénie',
+            'Somalie',
+            'Soudan',
+            'Sri Lanka',
+            'Suède',
+            'Suisse',
+            'Suriname',
+            'Swaziland',
+            'Syrie',
+            'Tadjikistan',
+            'Tanzanie',
+            'Tchad',
+            'Thaïlande',
+            'Togo',
+            'Tonga',
+            'Trinité-et-Tobago',
+            'Tunisie',
+            'Turkménistan',
+            'Turquie',
+            'Tuvalu',
+            'Ukraine',
+            'Uruguay',
+            'Vanuatu',
+            'Venezuela',
+            'Viêt Nam',
+            'Yémen',
+            'Yougoslavie',
+            'Zaïre',
+            'Zambie',
+            'Zimbabwe'];
 
         let cleanArray = function (array) {
             var i, j, len = array.length, out = [], obj = {};
@@ -111,22 +287,22 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
         };
 
         vm.event = {};
-        /*vm.event.details = {};*/
+        vm.event.details = {};
         let villeT = [];
 
         for (var i = 0; i < Evenements.find({}).count(); i++) {
             villeT.push(Evenements.find({}).fetch()[i].ville);
         }
         vm.ville = cleanArray(villeT);
-        console.log(vm.ville);
+        //console.log(vm.ville);
         if (eventAM) {
             vm.event = eventAM;
             /*vm.event._id = eventAM._id;
-            vm.event.details.firstname = eventAM.details.firstname;
-            vm.event.details.lastname = eventAM.details.lastname;
-            vm.event.ville = eventAM.ville;
-            vm.event.date = eventAM.date;
-            vm.event.base64 = eventAM.base64;*/
+             vm.event.details.firstname = eventAM.details.firstname;
+             vm.event.details.lastname = eventAM.details.lastname;
+             vm.event.ville = eventAM.ville;
+             vm.event.date = eventAM.date;
+             vm.event.base64 = eventAM.base64;*/
             vm.title = "Update";
             vm.button = "Update";
         } else {
@@ -135,13 +311,14 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
             vm.event.ville = "";
             vm.event.date = "";
             vm.event.base64 = "";
+            vm.event.state = "";
             vm.title = "Ajout";
             vm.button = "Ajouter";
         }
 
-        vm.hide = function () {
-            $mdDialog.hide();
-        };
+        /*vm.hide = function () {
+         $mdDialog.hide();
+         };*/
         vm.cancel = function () {
             $mdDialog.cancel();
         };
@@ -153,5 +330,5 @@ function displayController($reactive, $scope, $meteor, $mdDialog) {
             vm.event.base64 = fileObj.base64;
             vm.pick = fileObj.base64;
         }
-    };
-};
+    }
+}
