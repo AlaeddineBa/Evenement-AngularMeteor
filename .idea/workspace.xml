@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="96c414de-eca8-4398-9286-6a52a6a8e683" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/page/accueil2/loginRegister/login-popup.html" afterPath="$PROJECT_DIR$/client/app/page/accueil2/loginRegister/login-popup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/page/accueil2/loginRegister/register-popup.html" afterPath="$PROJECT_DIR$/client/app/page/accueil2/loginRegister/register-popup.html" />
     </list>
     <ignored path="Evenement-AngularMeteor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,8 +96,8 @@
       <file leaf-file-name="login-popup.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/app/page/accueil2/loginRegister/login-popup.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37135923">
-              <caret line="10" column="102" selection-start-line="10" selection-start-column="102" selection-end-line="10" selection-end-column="102" />
+            <state vertical-scroll-proportion="0.53640777">
+              <caret line="15" column="92" selection-start-line="15" selection-start-column="92" selection-end-line="15" selection-end-column="92" />
               <folding />
             </state>
           </provider>
@@ -1167,8 +1166,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/app/page/accueil2/loginRegister/login-popup.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37135923">
-          <caret line="10" column="102" selection-start-line="10" selection-start-column="102" selection-end-line="10" selection-end-column="102" />
+        <state vertical-scroll-proportion="0.53640777">
+          <caret line="15" column="92" selection-start-line="15" selection-start-column="92" selection-end-line="15" selection-end-column="92" />
           <folding />
         </state>
       </provider>

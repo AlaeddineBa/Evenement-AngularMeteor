@@ -13,7 +13,7 @@
                 <input type="password" class="login__input pass" placeholder="Password" ng-model="vm.auth.password"/>
             </div>
             <button type="button" class="login__submit" ng-click="vm.login(vm.auth)">Sign in</button>
-            <p class="login__signup">Don't have an account? &nbsp;<a><button type="button" class="login__signup" ng-click="vm.register()">Sign up</button></a></p>
+            <p class="login__signup">Don't have an account? &nbsp;<a ng-click="vm.register()">Sign up</a></p>
         </div>
     </div>
 
