@@ -15,6 +15,7 @@ function loginController($reactive, $scope, $state) {
         Meteor.loginWithPassword(auth.email, auth.password, function (error) {
             if (error) {
                 console.log(error.reason);
+                toastr.warning(error.reason);
             } else {
                 $state.go("dashboard.basic.displayEvent");
             }

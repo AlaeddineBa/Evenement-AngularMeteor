@@ -49,11 +49,7 @@
     padding-bottom: 13px;
 }
 
-.display-evenement {
-    height: 100px;
-    background-image: url(assets/images/ewUIL.png);
-    box-sizing: initial;
-}
+
 
 .icon-size {
     height: 72px;
@@ -61,8 +57,8 @@
     box-sizing: initial;
 }
 .size-dialog-add{
-    height: 370px;
-    width: 500px;
+    height: 540px;
+    width: 510px;
 }
 .file_input_div {
     margin: auto;
@@ -91,13 +87,59 @@
     padding-top: 0px;
 
 }
-
-.md-toolbar-tools {
-    height: 64px;
-    max-height: 64px;
+/*Images*/
+.drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    width: 130px;
+    height: 130px;
+    text-align: center;
+    padding-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    display: block;
+}
+img-crop {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 25px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.image-cadre{
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 25px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.ng-crop-container {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 25px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.drop-box.dragover {
+    border: 5px dashed blue;
 }
 
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
-*/
+.drop-box.dragover-err {
+    border: 5px dashed red;
+}
+.uploaded-image {
+    max-height: 100px;
+    max-width: 200px;
+}
+
+

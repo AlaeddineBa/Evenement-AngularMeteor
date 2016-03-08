@@ -12,49 +12,69 @@
         </md-toolbar>
 
         <md-dialog-content class="md-padding">
-            <div layout="row" layout-xs="column">
-                <md-input-container flex><label>Prenom</label> <input ng-model="vm.event.details.firstname">
-                </md-input-container>
-                <span flex="5"></span>
-                <md-input-container flex><label>Nom</label> <input ng-model="vm.event.details.lastname">
-                </md-input-container>
+            <div layout="column">
+                <div ng-hide="vm.ajout_modif">
+                    <img ng-src="{{vm.imageAffiche.url()}}" class="image-cadre">
+                </div>
+                <div ng-show="vm.ajout_modif">
+                    <div ngf-drop ngf-select
+                         ng-hide="vm.cropImgSrc"
+                         ngf-change="vm.addImages($files)"
+                         ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" class="drop-box"
+                         ngf-multiple="false" ngf-allow-dir="false" ngf-accept="'image/*'"
+                         ngf-drop-available="true">
+                        <div>Click here to select image</div>
+                        <div>
+                            <strong>OR</strong>
+                        </div>
+                        You can also drop image to here
+                    </div>
+                    <div ng-show="vm.cropImgSrc" class="ng-crop-container">
+                        <img-crop image="vm.cropImgSrc" result-image="vm.myCroppedImage" area-type="square"></img-crop>
+                    </div>
+                </div>
+                <div layout="row" layout-xs="column">
+                    <md-input-container flex><label>Prenom</label> <input ng-model="vm.event.firstname">
+                    </md-input-container>
+                    <span flex="5"></span>
+                    <md-input-container flex><label>Nom</label> <input ng-model="vm.event.lastname">
+                    </md-input-container>
+                </div>
+                <div layout="row" layout-xs="column">
+                    <md-input-container flex><label>Date</label> <input ng-model="vm.event.date"></md-input-container>
+                    <span flex="5"></span>
+
+                    <md-input-container>
+                        <label>Pays</label>
+                        <md-select ng-model="vm.event.state">
+                            <md-option ng-repeat="state in vm.states" value="{{state}}">
+                                {{state}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <span flex="5"></span>
+
+                    <md-autocomplete flex="" required="" md-input-name="autocompleteVille" md-input-minlength="1"
+                                     md-input-maxlength="18" md-selected-item="ul.selectedItem"
+                                     md-search-text="vm.event.ville"
+                                     md-items="item in vm.ville| filter: vm.event.ville:strict"
+                                     md-item-text="item" md-floating-label="Ville">
+                        <md-item-template>
+                            <span md-highlight-text="vm.event.ville">{{item}}</span>
+                        </md-item-template>
+
+                    </md-autocomplete>
+
+                </div>
+
+                <div>
+                    <!--<label>
+                        <md-icon ngf-select ngf-change="vm.addImages($files)" ngf-accept="'image/*'" md-svg-icon="image:ic_add_a_photo_24px" style="cursor: pointer;"></md-icon>
+                    </label>-->
+
+                </div>
             </div>
-            <div layout="row" layout-xs="column">
-                <md-input-container flex><label>Date</label> <input ng-model="vm.event.date"></md-input-container>
-                <span flex="5"></span>
-
-                <md-input-container>
-                    <label>Pays</label>
-                    <md-select ng-model="vm.event.state">
-                        <md-option ng-repeat="state in vm.states" value="{{state}}">
-                            {{state}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-
-                <span flex="5"></span>
-
-                <md-autocomplete flex="" required="" md-input-name="autocompleteVille" md-input-minlength="1"
-                                 md-input-maxlength="18" md-selected-item="ul.selectedItem"
-                                 md-search-text="vm.event.ville"
-                                 md-items="item in vm.ville| filter: vm.event.ville:strict"
-                                 md-item-text="item" md-floating-label="Ville">
-                    <md-item-template>
-                        <span md-highlight-text="vm.event.ville">{{item}}</span>
-                    </md-item-template>
-
-                </md-autocomplete>
-
-            </div>
-
-            <div>
-                <label>
-                    <md-icon md-svg-icon="image:ic_add_a_photo_24px" style="cursor: pointer;"></md-icon>
-                    <input type="file" ng-model="myfile" onload="vm.onLoad" accept="image/*" class="none"
-                           base-sixty-four-input />
-                </label>
-            </div>
-
 
         </md-dialog-content>
 

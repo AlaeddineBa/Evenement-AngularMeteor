@@ -11,10 +11,7 @@ function contactController($reactive, $scope) {
     vm.sendMail = sendMail;
 
     function sendMail(email, text){
-        console.log("send1");
         Meteor.call('sendEmail', email, text);
-
-        console.log(email+" "+text);
     }
 
 

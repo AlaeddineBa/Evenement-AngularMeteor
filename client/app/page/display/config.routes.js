@@ -17,9 +17,11 @@
                     }
                 },
                 resolve: {
-                    user: ['$auth', function ($auth) {
-                        return $auth.requireUser();
-                    }]
+                    currentUser: ($q) => {
+                        if(Meteor.userId() == null)
+                        return $q.reject("AUTH_REQUIRED");
+                        else $q.resolve();
+                    }
                 }
             });
     }

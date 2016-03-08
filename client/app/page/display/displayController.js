@@ -1,5 +1,9 @@
 angular
     .module('event')
+    .config(function ($mdThemingProvider) {
+        $mdThemingProvider.theme('altTheme')
+            .primaryPalette('purple');
+    })
     .controller('displayController', displayController);
 
 displayController.$inject = ['$reactive', '$scope', '$mdDialog'];
@@ -12,18 +16,32 @@ function displayController($reactive, $scope, $mdDialog) {
     vm.showConfirm = showConfirm;
     vm.showAdd = showAdd;
     vm.searchfilter = searchfilter;
+    vm.groupFilter = groupFilter;
+    vm.returnImage = returnImage;
 
     vm.subscribe('evenements');
-    //console.log(Meteor.user());
-    vm.helpers({
-        evenements: () => Evenements.find({})
+    vm.subscribe('villes');
+    vm.subscribe('images');
 
+    //console.log(Meteor.user());
+
+    vm.helpers({
+        evenements: () => Evenements.find({}),
+        groups: () => {
+            if (vm.evenements)
+                return groupBy('ville', vm.getReactively('evenements'));
+        }
     });
+
+
+    function returnImage(id) {
+        //console.log(Images.findOne({_id: id}));
+        return Images.findOne({_id: id});
+    }
 
     function deleteEvent(id) {
         Meteor.call('removeEvent', id);
     }
-
 
     function showConfirm(ev, id) {
         // Appending dialog to document.body to cover sidenav in docs app
@@ -34,6 +52,7 @@ function displayController($reactive, $scope, $mdDialog) {
             .targetEvent(ev)
             .ok('Oui')
             .cancel('Non');
+        // TODO: Animation
 
         $mdDialog.show(confirm).then(function () {
             deleteEvent(id);
@@ -48,26 +67,49 @@ function displayController($reactive, $scope, $mdDialog) {
                 locals: {eventAM: eventAM},
                 controller: DialogController,
                 controllerAs: 'vm',
+                clickOutsideToClose: true,
                 templateUrl: 'client/app/page/display/addEvent-popup.html',
                 targetEvent: ev
 
             })
             .then(function (event) {
-
+                console.log(event.image);
                 if (eventAM) {
-                    Meteor.call('updateEvent', event);
+                    if (event.image) {
+                        Images.insert(event.image, (err, fileObj) => {
+                            event.idImage = fileObj._id;
+                            Meteor.call('updateEvent', event);
+                            console.log("updateEvent 1 ");
+                        });
+                    } else {
+                        Meteor.call('updateEvent', event);
+                        console.log("updateEvent 2 ");
+                    }
                     toastr.success("Evenement modifié");
 
-                    //vm.ville.push(event.ville);
                 } else {
-                    Meteor.call('insertEvent', event);
+                    let villeV = [];
+                    if (event.image) {
+                        Images.insert(event.image, (err, fileObj) => {
+                            event.idImage = fileObj._id;
+                            Meteor.call('insertEvent', event);
+                            console.log("insertEvent 1 ");
+                        });
+                    } else {
+                        Meteor.call('insertEvent', event);
+                        console.log("insertEvent 2 ");
+                    }
+
+                    Villes.find({}).forEach(function (a) {
+                        villeV.push(a.name);
+                    });
+                    if (villeV.indexOf(event.ville) == -1) {
+                        Meteor.call('insertVille', event.ville);
+                    }
+
                     toastr.success("Evenement ajouté");
                 }
             }, function () {
-                vm.helpers({
-                    evenements: () => Evenements.find({})
-
-                });
                 if (eventAM) {
                     toastr.warning("Evenement non modifié");
                 } else {
@@ -76,27 +118,120 @@ function displayController($reactive, $scope, $mdDialog) {
             });
     }
 
-    function searchfilter() {
+    function sortOn(collection, name) {
+        collection.sort(
+            function (a, b) {
+                if (a[name] <= b[name]) {
+                    return ( -1 );
+                }
+                return ( 1 );
+            }
+        );
+    }
 
-        let search = [];
-        search.details = {};
-        if (vm.recherche) {
-            let res = vm.recherche.split(" ");
-            if (res.length == 0) {
-                //search.details = {};
-                console.log("test");
-            } else if (res.length == 1) {
-                search.details.$ = res[0];
-            } else if (res.length == 2) {
-                search.details.firstname = res[0];
-                search.details.lastname = res[1];
+    function groupBy(attribute, list) {
+        var groups = [];
+        sortOn(list, attribute);
+
+        let groupValue = "_INVALID_GROUP_VALUE_";
+
+        for (var i = 0; i < list.length; i++) {
+            let eventF = {
+                _id: list[i]._id,
+                firstname: list[i].firstname,
+                lastname: list[i].lastname,
+                date: list[i].date,
+                ville: list[i].ville,
+                idImage: list[i].idImage,
+                /*base64: list[i].base64,*/
+                state: list[i].state
+            };
+
+            // Should we create a new group?
+            if (eventF[attribute] !== groupValue) {
+                var group = {
+                    label: eventF[attribute],
+                    events: []
+                };
+                groupValue = group.label;
+                groups.push(group);
+
+            }
+
+            group.events.push(eventF);
+        }
+        return groups;
+    };
+
+    function groupFilter(groupitem) {
+        if (!vm.recherche) {
+            return true;
+        } else {
+            for (let i = 0; i < groupitem.events.length; i++) {
+                if (searchfilter(groupitem.events[i])) {
+                    return true;
+                }
             }
         }
-        return search;
+        return false;
+    }
+
+    function searchfilter(eventItem) {
+
+        let match = false;
+        if (!vm.recherche) {
+            return true;
+        } else {
+            var query = vm.recherche.split(" ");
+            if (query[1]) {
+                bool1 = false;
+                bool2 = false;
+                if ((eventItem.firstname.indexOf(query[0]) > -1) && (eventItem.lastname.indexOf(query[1]) > -1)) {
+                    bool1 = true;
+                } else if ((eventItem.firstname.indexOf(query[1]) > -1) && (eventItem.lastname.indexOf(query[0]) > -1)) {
+                    bool2 = true;
+                }
+                else {
+                    match = false;
+                }
+
+                match = bool1 || bool2;
+            } else if (query[0]) {
+                if ((eventItem.firstname.indexOf(query[0]) > -1) || (eventItem.lastname.indexOf(query[0]) > -1)) {
+                    match = true;
+                }
+                else
+                    match = false;
+            }
+        }
+        return match;
     }
 
     function DialogController($mdDialog, eventAM) {
         let vm = this;
+
+        vm.addImages = addImages;
+
+        function addImages(files) {
+            if (files.length > 0) {
+                let reader = new FileReader();
+                    console.log(reader);
+                vm.event.image = files[0];
+                reader.onload = (e) => {
+                    $scope.$apply(() => {
+                        vm.cropImgSrc = e.target.result;
+                        console.log("e");
+                        console.log(e);
+                        vm.myCroppedImage = '';
+                    });
+                };
+                reader.readAsDataURL(files[0]);
+            }
+            else {
+                vm.cropImgSrc = undefined;
+            }
+        }
+
 
         vm.states = ['Albanie',
             'Algérie',
@@ -275,50 +410,47 @@ function displayController($reactive, $scope, $mdDialog) {
             'Zambie',
             'Zimbabwe'];
 
-        let cleanArray = function (array) {
-            var i, j, len = array.length, out = [], obj = {};
-            for (i = 0; i < len; i++) {
-                obj[array[i]] = 0;
-            }
-            for (j in obj) {
-                out.push(j);
-            }
-            return out;
-        };
-
         vm.event = {};
-        vm.event.details = {};
+
         let villeT = [];
 
-        for (var i = 0; i < Evenements.find({}).count(); i++) {
-            villeT.push(Evenements.find({}).fetch()[i].ville);
-        }
-        vm.ville = cleanArray(villeT);
-        //console.log(vm.ville);
+        Villes.find({}).forEach(function (a) {
+            villeT.push(a.name);
+        });
+
+        vm.ville = villeT;
+
+        console.log(villeT);
+
         if (eventAM) {
-            vm.event = eventAM;
-            /*vm.event._id = eventAM._id;
-             vm.event.details.firstname = eventAM.details.firstname;
-             vm.event.details.lastname = eventAM.details.lastname;
-             vm.event.ville = eventAM.ville;
-             vm.event.date = eventAM.date;
-             vm.event.base64 = eventAM.base64;*/
+            vm.ajout_modif = false;
+            vm.imageAffiche = returnImage(eventAM.idImage);
+            vm.event = {
+                _id: eventAM._id,
+                firstname: eventAM.firstname,
+                lastname: eventAM.lastname,
+                date: eventAM.date,
+                ville: eventAM.ville,
+                idImage: eventAM.idImage,
+                //base64: eventAM.base64,
+                state: eventAM.state
+            }
             vm.title = "Update";
             vm.button = "Update";
         } else {
-            vm.event.details.firstname = "";
-            vm.event.details.lastname = "";
+            vm.ajout_modif = true;
+            vm.event.firstname = "";
+            vm.event.lastname = "";
             vm.event.ville = "";
             vm.event.date = "";
-            vm.event.base64 = "";
+            //vm.event.base64 = "";
+            vm.idImage = "";
             vm.event.state = "";
+
             vm.title = "Ajout";
             vm.button = "Ajouter";
         }
 
-        /*vm.hide = function () {
-         $mdDialog.hide();
-         };*/
         vm.cancel = function () {
             $mdDialog.cancel();
         };
@@ -328,7 +460,6 @@ function displayController($reactive, $scope, $mdDialog) {
 
         vm.onLoad = function (e, reader, file, fileList, fileOjects, fileObj) {
             vm.event.base64 = fileObj.base64;
-            vm.pick = fileObj.base64;
         }
     }
 }

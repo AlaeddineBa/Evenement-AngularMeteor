@@ -28,3 +28,7 @@ msavin:mongol
 alanning:roles
 email
 angular:angular-messages
+cfs:standard-packages
+cfs:gridfs
+danialfarid:ng-file-upload
+alexk111:ng-img-crop
