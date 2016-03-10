@@ -9,6 +9,7 @@ angular
 displayController.$inject = ['$reactive', '$scope', '$mdDialog'];
 
 function displayController($reactive, $scope, $mdDialog) {
+
     $reactive(this).attach($scope);
     var vm = this;
 
@@ -20,7 +21,6 @@ function displayController($reactive, $scope, $mdDialog) {
     vm.returnImage = returnImage;
 
     vm.subscribe('evenements');
-    vm.subscribe('villes');
     vm.subscribe('images');
 
     //console.log(Meteor.user());
@@ -28,16 +28,11 @@ function displayController($reactive, $scope, $mdDialog) {
     vm.helpers({
         evenements: () => Evenements.find({}),
         groups: () => {
-            if (vm.evenements)
+            if (vm.evenements){
                 return groupBy('ville', vm.getReactively('evenements'));
+            }
         }
     });
-
-
-    function returnImage(id) {
-        //console.log(Images.findOne({_id: id}));
-        return Images.findOne({_id: id});
-    }
 
     function deleteEvent(id) {
         Meteor.call('removeEvent', id);
@@ -128,6 +123,9 @@ function displayController($reactive, $scope, $mdDialog) {
             }
         );
     }
+    function returnImage(id) {
+        return Images.findOne({_id: id});
+    }
 
     function groupBy(attribute, list) {
         var groups = [];
@@ -143,10 +141,10 @@ function displayController($reactive, $scope, $mdDialog) {
                 date: list[i].date,
                 ville: list[i].ville,
                 idImage: list[i].idImage,
+                image: returnImage(list[i].idImage),
                 /*base64: list[i].base64,*/
                 state: list[i].state
             };
-
             // Should we create a new group?
             if (eventF[attribute] !== groupValue) {
                 var group = {
@@ -208,8 +206,9 @@ function displayController($reactive, $scope, $mdDialog) {
     }
 
     function DialogController($mdDialog, eventAM) {
+        $reactive(this).attach($scope);
         let vm = this;
-
+        vm.subscribe('villes');
         vm.addImages = addImages;
 
         function addImages(files) {
@@ -412,15 +411,13 @@ function displayController($reactive, $scope, $mdDialog) {
 
         vm.event = {};
 
-        let villeT = [];
-
-        Villes.find({}).forEach(function (a) {
-            villeT.push(a.name);
+        vm.helpers({
+            ville: () => Villes.find({}),
         });
 
-        vm.ville = villeT;
-
-        console.log(villeT);
+        /*Villes.find({}).forEach(function (a) {
+            villeT.push(a.name);
+        });*/
 
         if (eventAM) {
             vm.ajout_modif = false;
@@ -457,9 +454,5 @@ function displayController($reactive, $scope, $mdDialog) {
         vm.answer = function (event) {
             $mdDialog.hide(event);
         };
-
-        vm.onLoad = function (e, reader, file, fileList, fileOjects, fileObj) {
-            vm.event.base64 = fileObj.base64;
-        }
     }
 }

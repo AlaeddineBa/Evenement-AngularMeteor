@@ -1,0 +1,8 @@
+{
+  "mailConfig": {
+    "mail": "alaeddine.baghdadi1@gmail.com",
+    "password": "290592++",
+    "smtpMail": "smtp.gmail.com",
+    "port":"465"
+  }
+}

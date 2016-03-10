@@ -1,19 +1,29 @@
-<div class="demo accueil-auth" ng-controller="loginController as vm" style="font-size: 62.5%;">
+<div class="demo accueil-auth" ng-controller="loginController as vm">
 
     <div class="login">
         <div class="login__check"></div>
         <div class="login__form">
-            <div class="login__row">
-                <md-icon class="pointer__icon name svg-icon" md-svg-icon="communication:ic_email_24px" style="height: 2rem;
+            <!--<div class="login__row">
+                    <md-icon class="pointer__icon name svg-icon" md-svg-icon="communication:ic_email_24px" style="height: 2rem;
     width: 2rem;"></md-icon>
-                <input type="text" class="login__input name" placeholder="Email" ng-model="vm.auth.email"/>
-            </div>
-            <div class="login__row">
+                    <input type="text" class="login__input name" placeholder="Email" ng-model="vm.auth.email"/>
+            </div>-->
+            <md-input-container>
+                <label>Email</label>
+                <md-icon md-svg-icon="communication:ic_email_24px"></md-icon>
+                <input type="email" ng-model="vm.auth.email">
+            </md-input-container>
+            <md-input-container>
+                <label>Password</label>
+                <md-icon md-svg-icon="action:ic_fingerprint_24px"></md-icon>
+                <input type="password" ng-model="vm.auth.password">
+            </md-input-container>
+            <!--<div class="login__row">
                 <md-icon class="pointer__icon name svg-icon" md-svg-icon="action:ic_fingerprint_24px" style="height: 2rem;
     width: 2rem;"></md-icon>
                 <input type="password" class="login__input pass" placeholder="Password" ng-model="vm.auth.password"/>
-            </div>
-            <button type="button" class="login__submit" ng-click="vm.login(vm.auth)">Sign in</button>
+            </div>-->
+            <button type="button" class="login__submit__signIn" ng-click="vm.login(vm.auth)">Sign in</button>
             <p class="login__signup">Don't have an account? &nbsp;<a ng-click="vm.register()">Sign up</a></p>
         </div>
     </div>

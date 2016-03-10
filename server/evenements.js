@@ -1,21 +1,8 @@
 Meteor.publish('evenements', function () {
 
     let events = Evenements.find({});
-/*    console.log(events);
-    events.forEach(function (a) {
-        this.add('image', a.idImage, Images.findOne(a.idImage));
-    }
-    console.log(events);*/
     return events;
 });
-
-/*let events = find ... fetch
-
- events.foreach
- images
-
- return events*/
-
 
 Meteor.publish('villes', function () {
     return Villes.find({});
@@ -66,6 +53,9 @@ Meteor.methods({
     insertVille: function (ville) {
         Villes.insert({'name': ville}, function (error, result) {
         });
+    },
+    removeVille: function (id) {
+        Villes.remove(id);
     }
-})
+});
 

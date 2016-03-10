@@ -1,5 +1,10 @@
 Meteor.startup(function () {
-    process.env.MAIL_URL = 'smtp://alaeddine.baghdadi1:290592++@smtp.gmail.com:465/';
+    let mail = Meteor.settings.mailConfig.mail;
+    let password = Meteor.settings.mailConfig.password;
+    let smtpMail = Meteor.settings.mailConfig.smtpMail;
+    let port = Meteor.settings.mailConfig.port;
+    process.env.MAIL_URL = 'smtp://'+mail+':'+password+'@'+smtpMail+':'+port+'/';
+    //console.log(process.env.MAIL_URL);
     /*if (Evenements.find().count() === 0) {
         var evenements = [
             {

@@ -59,9 +59,9 @@
                                      md-input-maxlength="18" md-selected-item="ul.selectedItem"
                                      md-search-text="vm.event.ville"
                                      md-items="item in vm.ville| filter: vm.event.ville:strict"
-                                     md-item-text="item" md-floating-label="Ville">
+                                     md-item-text="item.name" md-floating-label="Ville">
                         <md-item-template>
-                            <span md-highlight-text="vm.event.ville">{{item}}</span>
+                            <span md-highlight-text="vm.event.ville">{{item.name}}</span>
                         </md-item-template>
 
                     </md-autocomplete>
