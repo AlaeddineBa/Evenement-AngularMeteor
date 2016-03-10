@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96c414de-eca8-4398-9286-6a52a6a8e683" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/app/page/accueil2/loginRegister/style1.scss" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.GITIGNORE/settings.json" afterPath="$PROJECT_DIR$/settings.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/page/accueil2/accueil.html" afterPath="$PROJECT_DIR$/client/app/page/accueil2/accueil.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/page/accueil2/loginRegister/login-popup.html" afterPath="$PROJECT_DIR$/client/app/page/accueil2/loginRegister/login-popup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/page/accueil2/loginRegister/register-popup.html" afterPath="$PROJECT_DIR$/client/app/page/accueil2/loginRegister/register-popup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/page/accueil2/style.css" afterPath="$PROJECT_DIR$/client/app/page/accueil2/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/page/display/addEvent-popup.html" afterPath="$PROJECT_DIR$/client/app/page/display/addEvent-popup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/page/display/display.html" afterPath="$PROJECT_DIR$/client/app/page/display/display.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app/page/display/displayController.js" afterPath="$PROJECT_DIR$/client/app/page/display/displayController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/evenements.js" afterPath="$PROJECT_DIR$/server/evenements.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/startup/loadEvent.js" afterPath="$PROJECT_DIR$/server/startup/loadEvent.js" />
     </list>
     <ignored path="Evenement-AngularMeteor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,20 +24,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="addEvent-popup.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/app/page/display/addEvent-popup.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="66" column="38" selection-start-line="57" selection-start-column="20" selection-end-line="66" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loadEvent.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="loadEvent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/startup/loadEvent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3063063">
+            <state vertical-scroll-proportion="-3.7777777">
               <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
               <folding />
             </state>
@@ -86,10 +67,20 @@
         </entry>
       </file>
       <file leaf-file-name="settings.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.GITIGNORE/settings.json">
+        <entry file="file://$PROJECT_DIR$/settings.json">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-1.3076923">
               <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -153,7 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.meteor/packages" />
         <option value="$PROJECT_DIR$/client/message.html" />
         <option value="$PROJECT_DIR$/client/app/page/accueil/register-popup.html" />
         <option value="$PROJECT_DIR$/public/assets/images/ic_mode_edit_black_48px.svg" />
@@ -204,6 +194,7 @@
         <option value="$PROJECT_DIR$/client/app/page/accueil2/loginRegister/login-popup.html" />
         <option value="$PROJECT_DIR$/settings.json" />
         <option value="$PROJECT_DIR$/server/startup/loadEvent.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -260,6 +251,16 @@
               <option name="myItemId" value="Evenement-AngularMeteor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Evenement-AngularMeteor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Evenement-AngularMeteor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -280,30 +281,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="startup" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Evenement-AngularMeteor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Evenement-AngularMeteor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Evenement-AngularMeteor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Evenement-AngularMeteor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".GITIGNORE" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -328,11 +305,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Alaeddine\WebstormProjects\Evenement-AngularMeteor" />
       <recent name="C:\Users\Alaeddine\WebstormProjects\Evenement-AngularMeteor\.GITIGNORE" />
       <recent name="C:\Users\Alaeddine\WebstormProjects\Evenement-AngularMeteor\client\app\page\accueil2\loginRegister" />
       <recent name="C:\Users\Alaeddine\WebstormProjects\Evenement-AngularMeteor\client\app\page\accueil2" />
       <recent name="C:\Users\Alaeddine\WebstormProjects\Evenement-AngularMeteor\client\app" />
-      <recent name="C:\Users\Alaeddine\WebstormProjects\Evenement-AngularMeteor\client\app\page\accueil" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Alaeddine\WebstormProjects\Evenement-AngularMeteor\client\app\page\accueil2\loginRegister" />
@@ -467,7 +444,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28422618" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -509,14 +486,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/evenements.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="15" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/Meteor/lib/Meteor.jar!/tsMeteorStubs/meteor-v1.2.0.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33233532">
@@ -846,14 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.GITIGNORE/settings.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923">
-          <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/imageDb.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.8888888">
@@ -872,8 +833,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/startup/loadEvent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3063063">
+        <state vertical-scroll-proportion="-3.7777777">
           <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3076923">
+          <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
           <folding />
         </state>
       </provider>
